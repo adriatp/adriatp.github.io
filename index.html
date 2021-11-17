@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="original_html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,69 +8,97 @@
 
     <script type="text/javascript" src="./static/jquery.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./static/bootstrap/css/themes/sandstone.css">
+    <link rel="stylesheet" type="text/css" href="./static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/bootstrap-themes/sandstone.css">
     <script type="text/javascript" src="./static/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./static/bootstrap-icons/font/bootstrap-icons.css">
 
     <link rel="stylesheet" type="text/css" href="./static/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
     <script type="text/javascript" src="./static/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="./static/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+
     <script type="text/javascript" src="./static/scripts.js"></script>
 
-    <title>PAC 2 - Visualització de Dades</title>
+    <title>PAC 2 - Visualització de dades</title>
 </head>
-<body onload="init_js()">
+<body id="original_body" onload="init_js()">
+
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand">
+    Visualització de dades - PAC 2
+  </a>
+  <a style="float: left;">
+    Adrià Tarradas Planella
+  </a>
+</nav>
 
 <div class="tabbable boxed parentTabs p-4">
 
-	<div class="tab-pane active" id="cepa" role="tabpanel" aria-labelledby="cepa-tab">
-		<div class="tabbable">
-			<ul class="nav nav-tabs" id="myTab2" role="tablist">
-			  <li class="nav-item">
-				<a class="nav-link active" id="ef-tab" data-toggle="tab" href="#ef" role="tab" aria-controls="ef" aria-selected="true">EF</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="cef_pfs-tab" data-toggle="tab" href="#cef_pfs" role="tab" aria-controls="cef_pfs" aria-selected="false">CEF/PFS</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" id="gop-tab" data-toggle="tab" href="#gop" role="tab" aria-controls="gop" aria-selected="false">GOP</a>
-			  </li>
-			</ul>
-			<div class="tab-content p-4">
-				<div class="tab-pane active" id="ef" role="tabpanel" aria-labelledby="ef-tab">
-					<div class="row">
-						<div class="col-12 col-md-4">
+        <div class="tab-pane active" id="cepa_lra" role="tabpanel" aria-labelledby="cepa_lra-tab">
+            <div class="tabbable">
+                <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="ef-tab" data-toggle="tab" href="#ef" role="tab" aria-controls="ef" aria-selected="true">Visualització 1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="cef_pfs-tab" data-toggle="tab" href="#cef_pfs" role="tab" aria-controls="cef_pfs" aria-selected="false">Visualització 2</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="gop-tab" data-toggle="tab" href="#gop" role="tab" aria-controls="gop" aria-selected="false">Visualització 3</a>
+                  </li>
+                </ul>
+                <div class="tab-content p-4">
+                    <div class="tab-pane active" id="ef" role="tabpanel" aria-labelledby="ef-tab">
+                        <div class="row">
+                            <div class="col-12 col-md-3 pt-3">
 
-							<p>Form input data</p>
+                                <div class="d-grid gap-2">
 
-							<div class="input-group-datepicker">
-								<input type="text" class="form-control docs-date" name="date" placeholder="Pick a date" autocomplete="off">
-								<div class="input-group-append">
-									<button type="button" class="btn btn-outline-secondary docs-datepicker-trigger" disabled="">
-										<i class="fa fa-calendar" aria-hidden="true"></i>
-									</button>
-								</div>
-							</div>
+                                    <select id="select_net" class="form-select" aria-label="Default select example">
+                                        <option value="EST_Vallfogona">EST_Vallfogona</option>
+                                        <option value="EST_Vallfogona_v4">EST_Vallfogona_v4</option>
+                                        <option value="EST_virtual_grid_v6">EST_virtual_grid_v6</option>
+                                    </select>
+
+                                    <div class="input-group date">
+                                        <input id="input_date" type="text" class="form-control">
+                                        <span class="input-group-text">
+                                            <i class="bi-calendar-event"></i>
+                                        </span>
+                                    </div>
+
+                                    <div id ="options">
+                                        <label id="label_range_hour" for="range_hour" class="form-label"><b>Hour:</b> 01:00</label>
+                                        <input type="range" class="form-range" min="1" max="24" id="range_hour" value="1">
+                                    </div>
+
+                                    <button id="button_visualize_grid" class="btn btn-lg btn-primary" type="button" disabled>Visualize grid</button>
+
+                                </div>
 
 
-						</div>
-						<div class="col-12 col-md-8">
-							Gràfica
-						</div>
-					</div>
-				</div>
-				<div class="tab-pane" id="cef_pfs" role="tabpanel" aria-labelledby="cef_pfs-tab">
-					<div class="col">
-						<p>CONTENT FOR CEF/PFS</p>
-					</div>
-				</div>
-				<div class="tab-pane" id="gop" role="tabpanel" aria-labelledby="gop-tab">
-					<div class="col">
-						<p>CONTENT FOR EF</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <iframe id="iframe_plot">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="cef_pfs" role="tabpanel" aria-labelledby="cef_pfs-tab">
+                        <div class="col">
+                            <p>CONTENT FOR CEF/PFS</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="gop" role="tabpanel" aria-labelledby="gop-tab">
+                        <div class="col">
+                            <p>CONTENT FOR EF</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 </div>
