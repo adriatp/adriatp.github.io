@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="./static/styles.css">
-    <link rel="stylesheet" type="text/css" href="./static/tabs-styles.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/tabs-styles.css">
 
-    <script type="text/javascript" src="./static/jquery.js"></script>
+    <script type="text/javascript" src="./static/jquery/jquery.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./static/bootstrap-themes/sandstone.css">
@@ -19,7 +19,13 @@
 
     <link rel="stylesheet" type="text/css" href="./static/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
 
-    <script type="text/javascript" src="./static/scripts.js"></script>
+    <script type="text/javascript" src="./static/js/script_viz1.js"></script>
+    <script type="text/javascript" src="./static/js/script_viz2.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="./static/chart/chart.css"/>
+    <script type="text/javascript" src="./static/chart/chart.js"></script>
+    <script type="text/javascript" src="./static/jscolor/jscolor.js"></script>
+	<script type="text/javascript" src="./data/viz_2/historics.js"></script>
 
     <title>PAC 2 - Visualització de dades</title>
 </head>
@@ -34,65 +40,121 @@
   </a>
 </nav>
 
-<div class="tabbable boxed parentTabs p-4">
+<div class="tabbable p-4">
+	<ul class="nav nav-tabs" id="myTab2" role="tablist">
+	  <li class="nav-item">
+		<a class="nav-link active" id="ef-tab" data-toggle="tab" href="#ef" role="tab" aria-controls="ef" aria-selected="true">Visualització 1</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" id="cef_pfs-tab" data-toggle="tab" href="#cef_pfs" role="tab" aria-controls="cef_pfs" aria-selected="false">Visualització 2</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" id="gop-tab" data-toggle="tab" href="#gop" role="tab" aria-controls="gop" aria-selected="false">Visualització 3</a>
+	  </li>
+	</ul>
+	<div class="tab-content p-4">
+		<div class="tab-pane active" id="ef" role="tabpanel" aria-labelledby="ef-tab">
+			<div class="row">
+				<div class="col-12 col-md-3 pt-3">
 
-        <div class="tab-pane active" id="cepa_lra" role="tabpanel" aria-labelledby="cepa_lra-tab">
-            <div class="tabbable">
-                <ul class="nav nav-tabs" id="myTab2" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" id="ef-tab" data-toggle="tab" href="#ef" role="tab" aria-controls="ef" aria-selected="true">Visualització 1</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="cef_pfs-tab" data-toggle="tab" href="#cef_pfs" role="tab" aria-controls="cef_pfs" aria-selected="false">Visualització 2</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" id="gop-tab" data-toggle="tab" href="#gop" role="tab" aria-controls="gop" aria-selected="false">Visualització 3</a>
-                  </li>
-                </ul>
-                <div class="tab-content p-4">
-                    <div class="tab-pane active" id="ef" role="tabpanel" aria-labelledby="ef-tab">
-                        <div class="row">
-                            <div class="col-12 col-md-3 pt-3">
+					<div class="d-grid gap-2">
 
-                                <div class="d-grid gap-2">
+						<select id="select_net" class="form-select" aria-label="Default select example">
+							<option value="Light">Light</option>
+							<option value="Dark">Dark</option>
+						</select>
 
-                                    <select id="select_net" class="form-select" aria-label="Default select example">
-                                        <option value="Light">Light</option>
-                                        <option value="Dark">Dark</option>
-                                    </select>
+						<div id ="options">
+							<label id="label_range_hour" for="range_hour" class="form-label"><b>Hour:</b> 01:00</label>
+							<input type="range" class="form-range" min="1" max="24" id="range_hour" value="1">
+						</div>
 
-                                    <div id ="options">
-                                        <label id="label_range_hour" for="range_hour" class="form-label"><b>Hour:</b> 01:00</label>
-                                        <input type="range" class="form-range" min="1" max="24" id="range_hour" value="1">
-                                    </div>
+						<button id="button_visualize_grid" class="btn btn-lg btn-primary" type="button">Visualize grid</button>
 
-                                    <button id="button_visualize_grid" class="btn btn-lg btn-primary" type="button">Visualize grid</button>
-
-                                </div>
+					</div>
 
 
-                            </div>
-                            <div class="col-12 col-md-9">
-                                <iframe id="iframe_plot">
-                                </iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="cef_pfs" role="tabpanel" aria-labelledby="cef_pfs-tab">
-                        <div class="col">
-                            <p>CONTENT FOR CEF/PFS</p>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="gop" role="tabpanel" aria-labelledby="gop-tab">
-                        <div class="col">
-                            <p>CONTENT FOR EF</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+				</div>
+				<div class="col-12 col-md-9">
+					<iframe id="iframe_plot">
+					</iframe>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane" id="cef_pfs" role="tabpanel" aria-labelledby="cef_pfs-tab">
+			<div class="col">
+				<div>
 
+					<div class="background_white">
+						<div class="div_left">
+						
+							<div id="summary_classes" class="options_container" style="display:none;">
+								<div class="options_title"><p id="title_summary">Summary</p></div>
+								<div class="middle">
+									<span class="title_element"><strong>Class:</strong></span>
+									<span class="select_element">
+										<select id="select_summary_classes" class="input_select_normal glowing_border_normal" onchange="updateSummary()"></select>
+									</span>
+								</div>
+								<div class="middle">
+									<span class="title_element"><strong>Mean error:</strong></span>
+									<span class="select_element" id="mean_error"></span>
+								</div>
+								<div class="middle">
+									<span class="title_element"><strong>Std dev:</strong></span>
+									<span class="select_element" id="std_dev"></span>
+								</div>
+								<div class="middle">
+									<span class="title_element"><strong>Max error:</strong></span>
+									<span class="select_element" id="max_error"></span>
+								</div>
+								<div class="middle">
+									<span class="title_element"><strong>Min error:</strong></span>
+									<span class="select_element" id="min_error"></span>
+								</div>
+								<div class="middle">
+									<span class="title_element"><strong>Not predicted:</strong></span>
+									<span class="select_element" id="not_predicted"></span>
+								</div>
+								<div class="middle">
+									<span class="title_element"><strong>Total historics:</strong></span>
+									<span class="select_element" id="total_historics"></span>
+								</div>
+							</div>
 
+							<div id="div_graphical_parameters" class="graphical_options_container" style="display:none;">
+								<div class="options_title"><p id="title_graphical_parameters">Graphical Parameters</p></div>
+								<div class="middle">
+									<span class="title_element"><strong>Classe:</strong></span>
+									<span class="select_element" id="select_graphical_parameters_classe"></span>
+								</div>
+								<div class="middle">
+									<span class="title_element"><strong>Evaluation:</strong></span>
+									<span class="select_element" id="select_graphical_parameters_evaluation"></span>
+								</div>
+								<div id="div_chart_classes"></div>
+							</div>
+
+						</div>
+
+						<div class="div_right">
+							<div id="chart_div">
+								<canvas id="line_chart"></canvas>
+							</div>
+						</div>
+
+					</div>
+				
+				</div>
+			
+			</div>
+		</div>
+		<div class="tab-pane" id="gop" role="tabpanel" aria-labelledby="gop-tab">
+			<div class="col">
+				<p>CONTENT FOR EF</p>
+			</div>
+		</div>
+	</div>
 </div>
 
 

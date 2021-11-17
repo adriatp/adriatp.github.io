@@ -3,6 +3,7 @@ function init_js() {
     init_tabs();
     init_datepickers();
     init_map_options();
+	upload_data();
 }
 
 function init_map_options() {
@@ -29,7 +30,7 @@ function init_map_options() {
         // Obtain and format the net name
         net = $('#select_net').val()
         // Get and display the plot
-        get_pyplot(net, date, hour)
+        get_pyplot(net, hour)
     });
 }
 
@@ -57,7 +58,7 @@ function draw_plot() {
     get_plot(plot_style,map_style)
 }
 
-function get_pyplot(plot_style, date, hour) {
+function get_pyplot(plot_style, hour) {
     $.ajax({
       type:"GET",
       dataType: 'html',
@@ -85,7 +86,3 @@ function init_datepickers() {
         $('.input-group.date input').datepicker('show');
     });
 }
-
-$("#input_btn_calendar").click(function() {
-    $("#input_date").datepicker('show')
-});
