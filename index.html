@@ -1,1 +1,104 @@
-<h1>Hello World!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./static/styles.css">
+    <link rel="stylesheet" type="text/css" href="./static/tabs-styles.css">
+
+    <script type="text/javascript" src="./static/jquery.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./static/bootstrap/css/themes/sandstone.css">
+    <script type="text/javascript" src="./static/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./static/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
+    <script type="text/javascript" src="./static/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <script type="text/javascript" src="./static/scripts.js"></script>
+
+    <title>PandaPower Visualization</title>
+</head>
+<body onload="init_js()">
+
+<div class="tabbable boxed parentTabs p-4">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="cepa-tab" data-toggle="tab" href="#cepa" role="tab" aria-controls="cepa" aria-selected="true">CEPA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="lra-tab" data-toggle="tab" href="#lra" role="tab" aria-controls="lra" aria-selected="false">LRA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="sha-tab" data-toggle="tab" href="#sha" role="tab" aria-controls="sha" aria-selected="false">SHA</a>
+      </li>
+    </ul>
+
+    <div class="tab-content p-4">
+
+        <div class="tab-pane active" id="cepa" role="tabpanel" aria-labelledby="cepa-tab">
+            <div class="tabbable">
+                <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="ef-tab" data-toggle="tab" href="#ef" role="tab" aria-controls="ef" aria-selected="true">EF</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="cef_pfs-tab" data-toggle="tab" href="#cef_pfs" role="tab" aria-controls="cef_pfs" aria-selected="false">CEF/PFS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="gop-tab" data-toggle="tab" href="#gop" role="tab" aria-controls="gop" aria-selected="false">GOP</a>
+                  </li>
+                </ul>
+                <div class="tab-content p-4">
+                    <div class="tab-pane active" id="ef" role="tabpanel" aria-labelledby="ef-tab">
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+
+                                <p>Form input data</p>
+
+                                <div class="input-group-datepicker">
+                                    <input type="text" class="form-control docs-date" name="date" placeholder="Pick a date" autocomplete="off">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-outline-secondary docs-datepicker-trigger" disabled="">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-12 col-md-8">
+                                Gràfica
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="cef_pfs" role="tabpanel" aria-labelledby="cef_pfs-tab">
+                        <div class="col">
+                            <p>CONTENT FOR CEF/PFS</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="gop" role="tabpanel" aria-labelledby="gop-tab">
+                        <div class="col">
+                            <p>CONTENT FOR EF</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane" id="lra" role="tabpanel" aria-labelledby="lra-tab">
+            Work in progress
+        </div>
+
+        <div class="tab-pane" id="sha" role="tabpanel" aria-labelledby="sha-tab">
+            Work in progress
+        </div>
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

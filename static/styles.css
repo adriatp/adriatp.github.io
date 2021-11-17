@@ -1,0 +1,13 @@
+h1 {
+    color: blue;
+}
+
+iframe {
+    width: 1000px;
+    height: 500px;
+}
+
+.float-left {
+    float: left;
+    width: 33%;
+}
