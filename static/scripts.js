@@ -65,16 +65,16 @@ function write_on_iframe(íframe,content) {
 }
 
 function draw_plot() {
-    net_name = $('input[name=net_name]:checked').val();
+    plot_style = $('input[name=net_name]:checked').val();
     map_style = $('input[name=map_style]:checked').val();
-    get_plot(net_name,map_style)
+    get_plot(plot_style,map_style)
 }
 
-function get_pyplot(net_name, date, hour) {
+function get_pyplot(plot_style, date, hour) {
     $.ajax({
       type:"GET",
       dataType: 'html',
-      url: '/get_plot/' + net_name + '/' + date + '/' + hour,
+      url: '/data/viz_1/' + plot_style + '/' + hour,
       success: function(res){
         write_on_iframe(iframe_plot,res);
       }
