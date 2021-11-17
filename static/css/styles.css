@@ -40,7 +40,7 @@ select {
 
 .div_right {
 	position: fixed;
-	width: calc(100% - 400px);
+	width: calc(100% - 440px);
 	right: 0;
 	/*display: block;*/
 	display: flex;
@@ -1565,4 +1565,8 @@ iframe {
 
 p {
 	margin-top: 14px !important
+}
+
+.title_viz {
+	padding-left: 40px;
 }
