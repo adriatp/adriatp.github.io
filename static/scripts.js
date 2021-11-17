@@ -26,31 +26,15 @@ function init_map_options() {
         hour = $('#range_hour').val()
         if (hour.length < 2)
             hour = '0' + hour
-        // Obtain and format the date value
-        date_split = ($('#input_date').val()).split('/')
-        year = date_split[2]
-        month = date_split[1]
-        if (month.length < 2)
-            month = '0' + month
-        day = date_split[0]
-        if (day.length < 2)
-            day = '0' + day
-        date = year + month + day
-        // Obtain and format the net name
-        net = $('#select_net').val()
-        // Get and display the plot
-        get_pyplot(net, date, hour)
+        get_pyplot(net, hour)
     });
 }
 
 function check_visualize_grid() {
     hour = $('#range_hour').val()
-    date = $('#input_date').val()
     net = $('#select_net').val()
 
     if (hour == null || hour == "")
-        $('#button_visualize_grid').prop('disabled', true);
-    else if (date == null || date == "")
         $('#button_visualize_grid').prop('disabled', true);
     else if (net == null || net == "")
         $('#button_visualize_grid').prop('disabled', true);
@@ -70,7 +54,7 @@ function draw_plot() {
     get_plot(plot_style,map_style)
 }
 
-function get_pyplot(plot_style, date, hour) {
+function get_pyplot(plot_style, hour) {
     $.ajax({
       type:"GET",
       dataType: 'html',
