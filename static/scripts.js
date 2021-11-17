@@ -26,7 +26,10 @@ function init_map_options() {
         hour = $('#range_hour').val()
         if (hour.length < 2)
             hour = '0' + hour
-        get_pyplot(net, hour)
+        // Obtain and format the net name
+        net = $('#select_net').val()
+        // Get and display the plot
+        get_pyplot(net, date, hour)
     });
 }
 
@@ -54,7 +57,7 @@ function draw_plot() {
     get_plot(plot_style,map_style)
 }
 
-function get_pyplot(plot_style, hour) {
+function get_pyplot(plot_style, date, hour) {
     $.ajax({
       type:"GET",
       dataType: 'html',
