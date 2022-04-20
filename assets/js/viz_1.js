@@ -10,7 +10,7 @@ var lineChartConfig = {
 
 	data: {
         
-        labels: erto_listed["Data"],
+        labels: erto["Data"],
 		
 		datasets: [{
                 label: "Nombre d'expedients",
@@ -18,14 +18,14 @@ var lineChartConfig = {
                 fill: false,
                 backgroundColor: window.chartColors.green,
                 borderColor: window.chartColors.green,
-                data: erto_listed["Nombre d'expedients"],
+                data: erto["Nombre d'expedients"],
             },
             {
                 label: "Nombre d'afectats",
                 fill: false,
                 backgroundColor: window.chartColors.gray,
                 borderColor: window.chartColors.gray,
-                data: erto_listed["Nombre d'afectats"],
+                data: erto["Nombre d'afectats"],
             }]
 	},
 	options: {
