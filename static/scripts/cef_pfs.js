@@ -78,7 +78,7 @@ function init_map_options() {
     $('#select_net').on('change', function() {
         check_visualize_grid();
     });
-    $('#button_visualize_grid').on('click', function() {
+    $('#button_visualize_net').on('click', function() {
         // Obtain and format the hour value
         hour = $('#range_hour').val()
         if (hour.length < 2)
@@ -113,13 +113,13 @@ function check_visualize_grid() {
     net = $('#select_net').val()
 
     if (hour == null || hour == "")
-        $('#button_visualize_grid').prop('disabled', true);
+        $('#button_visualize_net').prop('disabled', true);
     else if (date == null || date == "")
-        $('#button_visualize_grid').prop('disabled', true);
+        $('#button_visualize_net').prop('disabled', true);
     else if (net == null || net == "")
-        $('#button_visualize_grid').prop('disabled', true);
+        $('#button_visualize_net').prop('disabled', true);
     else
-        $('#button_visualize_grid').prop('disabled', false);
+        $('#button_visualize_net').prop('disabled', false);
 }
 
 function clean_iframe(iframe) {
@@ -217,7 +217,7 @@ function get_pyplot(net_name, date, hour, update_cef_tab, default_settings) {
     $.ajax({
         type:"GET",
         dataType: 'text',
-        url: '/get_plot',
+        url: 'http://84.88.154.15:51917/get_plot',
         data: data,
         success: function(res) {
             if (update_cef_tab)
@@ -237,7 +237,7 @@ function get_data_for_line_chart() {
     $.ajax({
         type:"GET",
         dataType: 'text',
-        url: '/get_ef',
+        url: 'http://84.88.154.15:51917/get_ef',
         data: {
             'ef_consumer': ef_consumer,
             'ef_init_date': ef_init_date,
