@@ -14,12 +14,12 @@ lang: en
 
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Europe/Madrid
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: Adria TP                        # the main title
 
 tagline: A text-focused Jekyll theme   # it will display as the sub-title
 
@@ -42,11 +42,11 @@ social:
   email: example@domain.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/tarravento      # change to your twitter homepage
+    - https://github.com/adriatp       # change to your github homepage
+    - https://www.linkedin.com/in/adria-tarradas-planella-6a3219186/
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
 
 google_site_verification:               # fill in to your verification string
 
@@ -87,8 +87,7 @@ avatar:
 toc: true
 
 comments:
-  active:         # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
-  # The active options are as follows:
+  active: 'giscus'
   disqus:
     shortname:    # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
@@ -97,10 +96,10 @@ comments:
     issue_term:   # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo:              # <gh-username>/<repo>
-    repo_id:
-    category:
-    category_id:
+    repo: 'adriatp/adriatp.github.io'
+    repo_id: 'R_kgDOITb_tA'
+    category: 'Comments'
+    category_id: 'DIC_kwDOITb_tM4CSM8L'
     mapping:           # optional, default to 'pathname'
     input_position:    # optional, default to 'bottom'
     lang:              # optional, default to the value of `site.lang`
