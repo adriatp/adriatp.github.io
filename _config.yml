@@ -19,9 +19,9 @@ timezone: Europe/Madrid
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Adria
+title: adriatp
 
-title_top: ''
+title_top: 'adriatp'
 
 tagline: Developer
 
