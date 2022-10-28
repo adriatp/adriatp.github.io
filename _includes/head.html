@@ -45,9 +45,9 @@
 
   <title>
   {%- unless page.layout == "home" -%}
-    {{ page.title | append: " | "}}
+    {{ page.title | append: " • "}}
   {%- endunless -%}
-    {{ site.title }}
+    {{ site.title_top }}
   </title>
 
   {% include favicons.html %}

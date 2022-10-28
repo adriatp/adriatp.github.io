@@ -19,12 +19,14 @@ timezone: Europe/Madrid
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Adria TP
+title: ϹI W IϽ
 
-tagline: Developer
+title_top: cı w ıɔ
+
+tagline: Adria Web Diary
 
 description: >-                        # used by seo meta and the atom feed
-  A tech blog
+  A cool blog about random stuff
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
