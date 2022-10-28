@@ -19,14 +19,14 @@ timezone: Europe/Madrid
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: ϹI W IϽ
+title: Adria
 
-title_top: cı w ıɔ
+title_top: ''
 
-tagline: Adria Web Diary
+tagline: Developer
 
 description: >-                        # used by seo meta and the atom feed
-  A cool blog about random stuff
+  ''
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
@@ -35,7 +35,7 @@ github:
   username: adriatp             # change to your github username
 
 twitter:
-  username: tarravento            # change to your twitter username
+  username: adriatarradas            # change to your twitter username
 
 social:
   # Change to your full name.
@@ -44,7 +44,7 @@ social:
   email: tarradas.adria@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/tarravento      # change to your twitter homepage
+    - https://twitter.com/adriatarradas      # change to your twitter homepage
     - https://github.com/adriatp       # change to your github homepage
     - https://www.linkedin.com/in/adria-tarradas-planella-6a3219186/
     # Uncomment below to add more social links
