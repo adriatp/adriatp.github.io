@@ -19,17 +19,17 @@ timezone: Europe/Madrid
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: adriatp
+title: ATP
 
-title_top: 'AdriaTP'
+title_top: 'ATP'
 
-tagline: Developer
+tagline: Homo Sapiens
 
 description: >-                        # used by seo meta and the atom feed
   ''
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://adriatp.github.io'
 
 github:
   username: adriatp             # change to your github username
