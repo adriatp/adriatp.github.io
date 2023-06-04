@@ -23,7 +23,7 @@ title: ATP
 
 title_top: 'ATP'
 
-tagline: Homo Sapiens
+tagline: Homo sapiens internetensis
 
 description: >-                        # used by seo meta and the atom feed
   ''
@@ -83,7 +83,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: /assets/img/avatar.png
 
 # boolean type, the global switch for ToC in posts.
 toc: true
