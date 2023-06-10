@@ -8,9 +8,9 @@ Des de temps immemorials l'ésser humà s'ha dedicat ha crear obres per remarcar
 
 En aquest blog es recopilaran treballs, estudis i projectes que vagi fent i que vulgui compartir.
 
-> Adrià Tarradas Planella
+> Adrià T. P.
 
 > A la vida `Adrià` per la família i `Turra` pels amics
 > 
-> A internet `adriatp` la part tècnica i `tarravento` la part abstracte
+> A internet `adriatp` la part lògica i `tarravento` la part emocional
 {: .prompt-info }
