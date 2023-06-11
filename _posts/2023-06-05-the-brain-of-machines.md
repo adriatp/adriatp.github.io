@@ -11,6 +11,8 @@ tags: [moore, mealy, flip-flop, jk, latche, digitalworks, vending, machine]
 
 Vull començar el blog amb un problema del que en guardo un molt bon record. Es correspon a l'últim exercici de l'assignatura `Estructura i Tecnologia de Computadors`, que vaig cursar durant el primer semestre com a estudiant d'enginyeria informàtica a l'Universitat de Girona.
 
+Explicar la diferència entre un circuit tancat i una màquina de Turing.
+
 - Pendent descriure el tipus de problema, automàt que es capaç de resoldre'l i llenguatge al que s'associa la seva implementació.
 
 - Explicar perquè és important, ja que permet detallar les parts més fonamentals del raonament autòmata i permet entendre com funciona la implementació d'algoritmes en una màquina electrònica.

@@ -12,5 +12,5 @@ En aquest blog es recopilaran treballs, estudis i projectes que vagi fent i que 
 
 > A la vida `Adrià` per la família i `Turra` pels amics
 > 
-> A internet `adriatp` la part lògica i `tarravento` la part emocional
+> A internet `adriatp` per la part lògica i `tarravento` per la part emocional
 {: .prompt-info }
