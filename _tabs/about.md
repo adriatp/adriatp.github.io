@@ -9,8 +9,3 @@ Des de temps immemorials l'ésser humà s'ha dedicat ha crear obres per remarcar
 En aquest blog es recopilaran treballs, estudis i projectes que vagi fent i que vulgui compartir.
 
 > Adrià T. P.
-
-> A la vida `Adrià` per la família i `Turra` pels amics
-> 
-> A internet `adriatp` per la part lògica i `tarravento` per la part emocional
-{: .prompt-info }
