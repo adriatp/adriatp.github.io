@@ -14,8 +14,8 @@ En aquest post es recopilaran les comandes per crear una aplicació base en `Rub
 | ubuntu | `20.04.6 LTS`             |
 | mysql  | `8.0.33-0ubuntu0.20.04.2` |
 | rbenv  | `1.2.0-33-ga6cf6ae`       |
-| ruby   | `2.7.6p219`               |
-| rails  | `7.0.5`                   |
+| ruby   | `3.0.2`                   |
+| rails  | `7.0.5.1`                 |
 | nvm    | `0.39.3`                  |
 | node   | `v18.13.0`                |
 | bundle | `2.3.23`                  |
@@ -78,7 +78,18 @@ rails db:create
 
 Amb l'aplicació correctament configurada podrem afegir/modificar fulles d'estil, codi javascript, fonts, imatges i elements de la base de dades i que es reflecteixi en les vistes sense haver de reiniciar el servidor.
 
-- TODO
+```js
+//= link_tree ../images
+//= link_tree ../builds
+//= link_tree ../fonts
+//= link_tree ../../javascript .js
+//= link_tree ../../javascript .js
+```
+
+
+
+> Important! Tots els fitxers que 
+{: .prompt-info }
 
 Executem el fitxer `./bin/dev`
 
