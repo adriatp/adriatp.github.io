@@ -4,31 +4,31 @@ title: Frases cèlebres
 date: 2023-07-18 05:38 +0200
 ---
 
-> La informática tiene que ver con los ordenadores lo mismo que la astronomía con los telescopios
+> La informàtica té a veure amb els ordinadors de la mateixa manera que l'astronomia amb els telescopis
 {: .prompt-tip }
 > Edsger Dijkstra
 
 
-> El ordenador nació para resolver problemas que antes no existían
+> L'ordinador va néixer per resoldre problemes que abans no existien
 {: .prompt-info }
 > Bill Gates
 
 
-> La física es el sistema operativo del Universo
+> La física és el sistema operatiu de l'Univers
 {: .prompt-danger }
 > Steven Garman
 
 
-> Si piensas que los usuarios de tus programas son idiotas, sólo los idiotas usarán tus programas
+> Si penses que els usuaris dels teus programes són idiotes, només els idiotes utilitzaran els teus programes
 {: .prompt-warning }
-> Steven Garman
+> Linus Torvalds
 
 
-> Antes de que un software sea reutilizable debería ser utilizable
+> Abans que un programari sigui reutilitzable, hauria de ser utilitzable
 {: .prompt-tip }
 > Ralph Johnson
 
 
-> La mejor forma de predecir el futuro es implementarlo
+> La millor forma de predir el futur és implementar-lo
 {: .prompt-info }
 > David Heinemeier Hansson
