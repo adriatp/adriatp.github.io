@@ -93,4 +93,130 @@ Amb l'aplicació correctament configurada podrem afegir/modificar fulles d'estil
 
 Executem el fitxer `./bin/dev`
 
+## Web server
+
+Per securitzar la connexió utilitzarem el servidor web `Apache` i el certificat gratuït de `Let's Encrypt`. Arribats aquest punt necessitem un servidor (pot ser local o remot, jo he utilitzat AWS) i un nom de domini que redirigeixi al nostre servidor (en el meu cas, `adriatp.com`).
+
+Primer instalem l'Apache:
+
+```bash
+sudo apt update
+sudo apt install apache2
+sudo ufw app list
+sudo ufw allow 'Apache'
+sudo ufw status
+sudo systemctl status apache2
+```
+
+I configurem el lloc web:
+
+```bash
+sudo mkdir /var/www/adriatp.com
+sudo chown -R $USER:$USER /var/www/adriatp.com
+sudo chmod -R 755 /var/www/adriatp.com
+sudo nano /var/www/adriatp.com/index.html
+```
+
+A index hi posem alguna cosa random (dp ho canviarem don't worry):
+
+```bash
+<html>
+    <head>
+        <title>Welcome to adriatp.com!</title>
+    </head>
+    <body>
+        <h1>Success!  The your_domain virtual host is working!</h1>
+    </body>
+</html>
+```
+
+I configurem l'Apache:
+
+```bash
+sudo nano /etc/apache2/sites-available/adriatp.com.conf
+```
+
+Amb les últimes línies fem que sempre redirigeixi al lloc configurat amb `https`.
+
+```bash
+<VirtualHost *:80>
+    ServerName adriatp.com
+    ServerAlias www.adriatp.com
+    DocumentRoot /var/www/adriatp.com
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    RewriteEngine on
+    RewriteCond %{SERVER_NAME} =adriatp.com [OR]
+    RewriteCond %{SERVER_NAME} =www.adriatp.com
+    RewriteRule ^ https://www.%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
+```
+
+Habilitem el fitxer generat i deshabilitem el fitxer per defecte:
+
+```bash
+sudo a2ensite adriatp.com.conf
+sudo a2dissite 000-default.conf
+```
+
+Comprovem que la sintaxis és correcte i reiniciem l'Apache per aplicar els canvis:
+
+```bash
+sudo apache2ctl configtest
+sudo systemctl restart apache2
+```
+
+## SSL amb Let's Encrypt
+
+Primer instal·lem certbot:
+
+```bash
+sudo apt install certbot python3-certbot-apache
+```
+
+```bash
+sudo ufw status
+sudo ufw allow 'Apache Full'
+sudo ufw delete allow 'Apache'
+sudo ufw status
+```
+
+```bash
+sudo certbot --apache
+```
+
+```bash
+sudo nano adriatp.com-le-ssl.conf
+```
+
+```bash
+  <IfModule mod_ssl.c>
+  <VirtualHost *:443>
+      ServerName streex.tv
+      ServerAlias www.streex.tv
+      DocumentRoot /var/www/streex.tv
+      ErrorLog ${APACHE_LOG_DIR}/error.log
+      CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+      # Redirect non-www to www
+      RewriteEngine on
+      RewriteCond %{HTTP_HOST} !^www\. [NC]
+      RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+      SSLCertificateFile /etc/letsencrypt/live/streex.tv/fullchain.pem
+      SSLCertificateKeyFile /etc/letsencrypt/live/streex.tv/privkey.pem
+      Include /etc/letsencrypt/options-ssl-apache.conf
+  </VirtualHost>
+  </IfModule>
+```
+
 ## Deploy
+
+Cal instalar les llibreries de mysql:
+
+```bash
+sudo apt-get update
+sudo apt-get install libmysqlclient-dev
+```
+
+< pendent entrada a part pq ocupa varis fitxers i multiples configs >
