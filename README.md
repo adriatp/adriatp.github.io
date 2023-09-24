@@ -1,6 +1,6 @@
 # adriatp.github.io
 
-This is **my blog**. I hope someday this gonna be a useful blog full of details to implement quick and easy anything but today is a tailor's drawer full of 💩.
+That's **my blog**. Someday it's gonna be a useful blog full of details to implement quick and easy anything but nowadays is just a tailor's drawer full of 💩.
 
 It uses a bunch of stuff programmed by another people: 
 
