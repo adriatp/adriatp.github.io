@@ -11,6 +11,6 @@ It uses a bunch of stuff programmed by another people:
 - [**Universe**](https://www.nasa.gov/sites/default/files/thumbnails/image/main_image_deep_field_smacs0723-5mb.jpg)
 - **...**
 
-<div align="center">
-	<img src="https://parismaine.org/wp-content/uploads/2017/02/website-currently-under-construction-APcYla-clipart.jpg" width="400">
-</div>
+---
+
+![](https://raw.githubusercontent.com/adriatp/adriatp-assets/master/images/BIP.png)
