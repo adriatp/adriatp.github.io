@@ -32,37 +32,67 @@
   </nav>
   <iframe id="iframe"></iframe>
   <script>
-    async function getFoldersInRepo(owner, repo) {
+    async function getFoldersInRepo(owner, repo, get_hidden_paths) {
+      // https://api.github.com/repos/adriatp/js_scripts/contents
       const url = `https://api.github.com/repos/${owner}/${repo}/contents`;
       const response = await fetch(url);
       const data = await response.json();
       if (Array.isArray(data)) {
-        const folders = data.filter(item => item.type === 'dir').map(item => item.path);
-        let select = document.querySelector("#select_folder");
-        for (let folder of folders) {
-          let option = document.createElement("option");
-          option.value = folder;
-          option.textContent = folder;
-          select.appendChild(option);
-        }
-        update_iframe(owner,repo,"main",select.value);
+        const folders = data.filter(item => item.type === 'dir' && !item.name.startsWith('.')).map(item => item.path);
+        return folders;
       } else {
         console.log('Error:', data.message);
+        return [];
       }
     }
 
-    function update_iframe(owner, repo, branch, folder) {
+    function populateSelect(select_id, folders) {
+      let select = document.querySelector(`#${ select_id }`);
+      for (let folder of folders) {
+        let option = document.createElement("option");
+        option.value = folder;
+        option.textContent = folder;
+        select.appendChild(option);
+      }
+    }
+
+    async function fetchLatestSHA(owner, repo, branch) {
+      // https://api.github.com/repos/adriatp/js_scripts/commits/main
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/commits/${branch}`);
+      const data = await res.json();
+      return data.sha;
+    }
+
+    function update_iframe(owner, repo, latest_sha, folder) {
       const oldIframe = document.getElementById('iframe');
       const newIframe = document.createElement('iframe');
       newIframe.id = 'iframe';
       oldIframe.replaceWith(newIframe);
-      const url = `https://cdn.jsdelivr.net/gh/${ owner }/${ repo }@${ branch }/${ folder }`;
-      const index_url = `${ url }/index.html`;
+      // https://cdn.jsdelivr.net/gh/adriatp/js_scripts@09f9acbdb92d069828ce7f865e4fef0edddc4f68
+      const url_repo = `https://cdn.jsdelivr.net/gh/${ owner }/${ repo }@${ latest_sha }`;
+      const url_folder = `${ url_repo }/${ folder }`;
+      const index_url = `${ url_folder }/index.html`;
       fetch(index_url)
         .then(response => response.text())
         .then(htmlContent => {
-          htmlContent = htmlContent.replace(/href="(?!https?:\/\/)([^"]*)"/g, `href="${url}/$1"`);
-          htmlContent = htmlContent.replace(/src="(?!https?:\/\/)([^"]*)"/g, `src="${url}/$1"`);
+          htmlContent = htmlContent.replace(/href="(?!https?:\/\/)([^"]*)"/g, (match, path) => {
+            console.log(match);
+            console.log(path);
+            if (path.startsWith('..')) {
+              return `href="${url_repo}/${path.slice(3)}"`;
+            } else {
+              return `href="${url_folder}/${path}"`;
+            }
+          });
+          htmlContent = htmlContent.replace(/src="(?!https?:\/\/)([^"]*)"/g, (match, path) => {
+            console.log(match);
+            console.log(path);
+            if (path.startsWith('..')) {
+              return `src="${url_repo}/${path.slice(3)}"`;
+            } else {
+              return `src="${url_folder}/${path}"`;
+            }
+          });
           const iframe = document.getElementById('iframe');
           const iframeDoc = iframe.document || iframe.contentDocument || iframe.contentWindow.document;
           iframeDoc.open();
@@ -72,13 +102,24 @@
         .catch(err => console.error('Error loading HTML:', err));
     }
 
-    const user = "adriatp"
-    const repo = "js_scripts"
-    const folders = getFoldersInRepo(user, repo);
-    const select = document.querySelector("#select_folder");
-    select.addEventListener('change', () => {
-      update_iframe(user, repo, "main", select.value);
-    });
+    const user = "adriatp";
+    const repo = "js_scripts";
+    const branch = "main";
+    const select_id = "select_folder"
+
+    async function main() {
+      const folders = await getFoldersInRepo(user, repo, false);
+      const latest_commit = await fetchLatestSHA(user, repo, branch);
+      populateSelect(`${ select_id }`, folders);
+      const select = document.querySelector(`#${ select_id }`);
+      select.addEventListener('change', () => {
+        update_iframe(user, repo, latest_commit, select.value);
+      });
+      update_iframe(user, repo, latest_commit, select.value);
+    }
+
+    main();
+
   </script>
 </body>
 </html>
