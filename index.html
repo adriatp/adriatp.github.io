@@ -1,4 +1,46 @@
----
-layout: home
-# Index page
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GH Runner</title>
+	<link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="iframe"></iframe>
+  <script>
+    // const repo = "adriatp/js_scripts/buscaparaules"
+    // const url = `https://cdn.jsdelivr.net/gh/${ repo }`;
+    const user = "adriatp"
+    const repo = "js_scripts"
+    const branch = "main";
+    const folder = "buscaparaules"
+    const url = `https://cdn.jsdelivr.net/gh/${ user }/${ repo }@${ branch }/${ folder }`;
+    const index_url = `${ url }/index.html`;
+    fetch(index_url)
+      .then(response => response.text())
+      .then(htmlContent => {
+        htmlContent = htmlContent.replace(/href="(?!https?:\/\/)([^"]*)"/g, `href="${url}/$1"`);
+        htmlContent = htmlContent.replace(/src="(?!https?:\/\/)([^"]*)"/g, `src="${url}/$1"`);
+        const iframe = document.getElementById('iframe');
+        const iframeDoc = iframe.document || iframe.contentDocument || iframe.contentWindow.document;
+        iframeDoc.open();
+        iframeDoc.write(htmlContent);
+        iframeDoc.close();
+      })
+      .catch(err => console.error('Error loading HTML:', err));
+  </script>
+</body>
+</html>
