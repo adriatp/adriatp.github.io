@@ -76,8 +76,6 @@
         .then(response => response.text())
         .then(htmlContent => {
           htmlContent = htmlContent.replace(/href="(?!https?:\/\/)([^"]*)"/g, (match, path) => {
-            console.log(match);
-            console.log(path);
             if (path.startsWith('..')) {
               return `href="${url_repo}/${path.slice(3)}"`;
             } else {
@@ -85,8 +83,6 @@
             }
           });
           htmlContent = htmlContent.replace(/src="(?!https?:\/\/)([^"]*)"/g, (match, path) => {
-            console.log(match);
-            console.log(path);
             if (path.startsWith('..')) {
               return `src="${url_repo}/${path.slice(3)}"`;
             } else {
