@@ -28,7 +28,9 @@
 <body>
   <nav class="navbar navbar-dark bg-dark px-3">
     <span class="navbar-brand">GH Runner</span>
-    <select id="select_folder" class="form-select w-auto ms-auto"></select>
+    <select id="select_folder" class="form-select w-auto ms-auto">
+      <option value="https://adriatp.github.io/proker">proker</option>
+    </select>
   </nav>
   <iframe id="iframe"></iframe>
   <script>
@@ -68,6 +70,10 @@
       const newIframe = document.createElement('iframe');
       newIframe.id = 'iframe';
       oldIframe.replaceWith(newIframe);
+      if (folder.startsWith("http://") || folder.startsWith("https://")) {
+        newIframe.src = folder;
+        return;
+      }
       // https://cdn.jsdelivr.net/gh/adriatp/js_scripts@09f9acbdb92d069828ce7f865e4fef0edddc4f68
       const url_repo = `https://cdn.jsdelivr.net/gh/${ owner }/${ repo }@${ latest_sha }`;
       const url_folder = `${ url_repo }/${ folder }`;
