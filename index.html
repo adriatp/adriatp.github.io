@@ -28,9 +28,14 @@
 <body>
   <nav class="navbar navbar-dark bg-dark px-3">
     <span class="navbar-brand">GH Runner</span>
-    <select id="select_folder" class="form-select w-auto ms-auto">
+    <select id="select_folder" class="form-select w-auto ms-auto me-2">
       <option value="https://adriatp.github.io/proker">proker</option>
     </select>
+    <button id="fullscreen-btn" class="btn btn-outline-light">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fullscreen" viewBox="0 0 16 16">
+        <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+      </svg>
+    </button>
   </nav>
   <iframe id="iframe"></iframe>
   <script>
@@ -120,8 +125,20 @@
       update_iframe(user, repo, latest_commit, select.value);
     }
 
-    main();
+     main();
 
+    document.getElementById('fullscreen-btn').addEventListener('click', () => {
+      const iframe = document.getElementById('iframe');
+      if (!iframe) return;
+      
+      if (!document.fullscreenElement) {
+        iframe.requestFullscreen().catch(err => {
+          console.log(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    });
   </script>
 </body>
 </html>
