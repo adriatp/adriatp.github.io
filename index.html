@@ -70,9 +70,14 @@
       return data.sha;
     }
 
-    function update_iframe(owner, repo, latest_sha, folder) {
+    function update_iframe(owner, repo, latest_sha, select_tag) {
+      const url_hash = location.hash ? decodeURIComponent(location.hash.slice(1)) : "";
+      const option = Array.from(select_tag.options).find(o => o.text === url_hash) || select_tag.options[0];
+      if (!option) option = folderSelect.options[0];
+      const folder = option.value;
       const oldIframe = document.getElementById('iframe');
       const newIframe = document.createElement('iframe');
+      
       newIframe.id = 'iframe';
       oldIframe.replaceWith(newIframe);
       if (folder.startsWith("http://") || folder.startsWith("https://")) {
@@ -109,6 +114,11 @@
         .catch(err => console.error('Error loading HTML:', err));
     }
 
+    function update_url_hash(select_tag) {
+      const text = select_tag.options[select_tag.selectedIndex].text;
+      location.hash = text;
+    } 
+
     const user = "adriatp";
     const repo = "js_scripts";
     const branch = "main";
@@ -120,9 +130,10 @@
       populateSelect(`${ select_id }`, folders);
       const select = document.querySelector(`#${ select_id }`);
       select.addEventListener('change', () => {
-        update_iframe(user, repo, latest_commit, select.value);
+        update_url_hash(select);
+        update_iframe(user, repo, latest_commit, select);
       });
-      update_iframe(user, repo, latest_commit, select.value);
+      update_iframe(user, repo, latest_commit, select);
     }
 
      main();
